@@ -22,7 +22,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-
+models/
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -62,6 +62,7 @@ target/
 # Database
 *.db
 *.rdb
+data/
 
 # Pycharm
 .idea
@@ -88,3 +89,4 @@ target/
 # Mypy cache
 .mypy_cache/
 /data
+/models

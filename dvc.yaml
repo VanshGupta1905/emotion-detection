@@ -26,3 +26,11 @@ stages:
     outs:
     - data/features/test_bow.csv
     - data/features/train_bow.csv
+
+  model_training:
+    cmd: python src/models/train_model.py
+    deps:
+    - data/features/test_bow.csv
+    - data/features/train_bow.csv
+    outs:
+    - models/model.pkl

@@ -59,3 +59,19 @@ stages:
       hash: md5
       md5: 7ce7fea007e46979702380eddef718a1
       size: 887030
+  model_training:
+    cmd: python src/models/train_model.py
+    deps:
+    - path: data/features/test_bow.csv
+      hash: md5
+      md5: cd33ec8742452ab509e70e78f0e6b18b
+      size: 221062
+    - path: data/features/train_bow.csv
+      hash: md5
+      md5: 7ce7fea007e46979702380eddef718a1
+      size: 887030
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: 9dea6c9bf1a42b8a803b804f303ab56a
+      size: 73036
