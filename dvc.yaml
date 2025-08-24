@@ -8,6 +8,7 @@ stages:
     outs:
     - data/raw/train.csv
     - data/raw/test.csv
+
   preprocessing:
     cmd: python src/features/build_features.py
     deps:
@@ -16,3 +17,12 @@ stages:
     outs:
     - data/processed/test_processed.csv
     - data/processed/train_processed.csv
+
+  feature_engineering:
+    cmd: python src/features/feature_engineering.py
+    deps:
+    - data/processed/test_processed.csv
+    - data/processed/train_processed.csv
+    outs:
+    - data/features/test_bow.csv
+    - data/features/train_bow.csv
