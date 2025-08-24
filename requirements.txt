@@ -18,3 +18,5 @@ statsmodels
 PyYAML
 
 # data ingestion
+
+nltk
