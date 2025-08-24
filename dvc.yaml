@@ -2,9 +2,17 @@ stages:
   data_ingestion:
     cmd: python src/data/make_dataset.py
     deps:
-      - src/data/make_dataset.py
+    - src/data/make_dataset.py
     params:
-      - data_ingestion.test_size
+    - data_ingestion.test_size
     outs:
-      - data/raw/train.csv
-      - data/raw/test.csv
+    - data/raw/train.csv
+    - data/raw/test.csv
+  preprocessing:
+    cmd: python src/features/build_features.py
+    deps:
+    - data/raw/test.csv
+    - data/raw/train.csv
+    outs:
+    - data/processed/test_processed.csv
+    - data/processed/train_processed.csv
