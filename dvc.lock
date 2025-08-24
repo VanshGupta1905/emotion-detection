@@ -1,0 +1,21 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/data/make_dataset.py
+    deps:
+    - path: src/data/make_dataset.py
+      hash: md5
+      md5: 997c18ab255b0b84c765ee6dfd5ad2b4
+      size: 3093
+    params:
+      params.yaml:
+        data_ingestion.test_size: 0.2
+    outs:
+    - path: data/raw/test.csv
+      hash: md5
+      md5: a2bdbb8889e0b1b400eb611cedd7d651
+      size: 162098
+    - path: data/raw/train.csv
+      hash: md5
+      md5: 62b9f0c4e921cec8debb427edfc9cb67
+      size: 655499
