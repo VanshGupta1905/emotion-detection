@@ -3,7 +3,7 @@ import pandas as pd
 
 import os
 
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 # fetch the data from data/processed
 train_data = pd.read_csv('./data/processed/train_processed.csv')
@@ -20,7 +20,7 @@ X_test = test_data['content'].values
 y_test = test_data['sentiment'].values
 
 # Apply Bag of Words (CountVectorizer)
-vectorizer = CountVectorizer(max_features=50)
+vectorizer = TfidfVectorizer(max_features=50)
 
 # Fit the vectorizer on the training data and transform it
 X_train_bow = vectorizer.fit_transform(X_train)
@@ -39,8 +39,8 @@ test_df['label'] = y_test
 # store the data inside data/features
 data_path = os.path.join("data","features")
 
-os.makedirs(data_path)
+os.makedirs(data_path, exist_ok=True)
 
-train_df.to_csv(os.path.join(data_path,"train_bow.csv"))
-test_df.to_csv(os.path.join(data_path,"test_bow.csv"))
+train_df.to_csv(os.path.join(data_path,"train_tfidf.csv"))
+test_df.to_csv(os.path.join(data_path,"test_tfidf.csv"))
 

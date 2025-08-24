@@ -24,13 +24,13 @@ stages:
     - data/processed/test_processed.csv
     - data/processed/train_processed.csv
     outs:
-    - data/features/test_bow.csv
-    - data/features/train_bow.csv
+    - data/features/test_tfidf.csv
+    - data/features/train_tfidf.csv
 
   model_training:
     cmd: python src/models/train_model.py
     deps:
-    - data/features/test_bow.csv
-    - data/features/train_bow.csv
+    - data/features/test_tfidf.csv
+    - data/features/train_tfidf.csv
     outs:
     - models/model.pkl

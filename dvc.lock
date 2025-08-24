@@ -51,27 +51,27 @@ stages:
       md5: 76a3f219f2ab4f2081cddfa0a27287b6
       size: 485640
     outs:
-    - path: data/features/test_bow.csv
+    - path: data/features/test_tfidf.csv
       hash: md5
-      md5: cd33ec8742452ab509e70e78f0e6b18b
-      size: 221062
-    - path: data/features/train_bow.csv
+      md5: 66380e5845b010b07b1e4f0dc0f884a8
+      size: 472501
+    - path: data/features/train_tfidf.csv
       hash: md5
-      md5: 7ce7fea007e46979702380eddef718a1
-      size: 887030
+      md5: 92066452ea31b28ca899eff586b819c1
+      size: 1895287
   model_training:
     cmd: python src/models/train_model.py
     deps:
-    - path: data/features/test_bow.csv
+    - path: data/features/test_tfidf.csv
       hash: md5
-      md5: cd33ec8742452ab509e70e78f0e6b18b
-      size: 221062
-    - path: data/features/train_bow.csv
+      md5: 66380e5845b010b07b1e4f0dc0f884a8
+      size: 472501
+    - path: data/features/train_tfidf.csv
       hash: md5
-      md5: 7ce7fea007e46979702380eddef718a1
-      size: 887030
+      md5: 92066452ea31b28ca899eff586b819c1
+      size: 1895287
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 9dea6c9bf1a42b8a803b804f303ab56a
-      size: 73036
+      md5: a1cf813aa40d127688fca61638cebbf1
+      size: 69705
