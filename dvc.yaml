@@ -34,3 +34,10 @@ stages:
     - data/features/train_tfidf.csv
     outs:
     - models/model.pkl
+  model_evaluation:
+    cmd: python src/models/evaluation.py
+    deps:
+    - models/model.pkl
+    - data/features/test_tfidf.csv
+    metrics:
+    - reports/metrics.json

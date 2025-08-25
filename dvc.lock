@@ -75,3 +75,19 @@ stages:
       hash: md5
       md5: a1cf813aa40d127688fca61638cebbf1
       size: 69705
+  model_evaluation:
+    cmd: python src/models/evaluation.py
+    deps:
+    - path: data/features/test_tfidf.csv
+      hash: md5
+      md5: 66380e5845b010b07b1e4f0dc0f884a8
+      size: 472501
+    - path: models/model.pkl
+      hash: md5
+      md5: a1cf813aa40d127688fca61638cebbf1
+      size: 69705
+    outs:
+    - path: reports/metrics.json
+      hash: md5
+      md5: b0fef11a0773ca15bf2f807a384e076d
+      size: 140
