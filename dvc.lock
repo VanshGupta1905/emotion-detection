@@ -70,3 +70,43 @@ stages:
       hash: md5
       md5: b20a17fc3301283d358156434c703c45
       size: 3598306
+  model_training:
+    cmd: python src/models/model_building.py
+    deps:
+    - path: data/processed/test_tfidf.csv
+      hash: md5
+      md5: 7f4c8a91e7f252e101a445a46e610b45
+      size: 898644
+    - path: data/processed/train_tfidf.csv
+      hash: md5
+      md5: b20a17fc3301283d358156434c703c45
+      size: 3598306
+    - path: src/models/model_building.py
+      hash: md5
+      md5: 4771caa90a50919faf68f566850e4a45
+      size: 3105
+    params:
+      params.yaml:
+        model_building.learning_rate: 0.1
+        model_building.n_estimators: 25
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: 75e33cbd456b82c22a3dda4079ede701
+      size: 6367437
+  model_evaluation:
+    cmd: python src/models/model_evaluation.py
+    deps:
+    - path: models/model.pkl
+      hash: md5
+      md5: 75e33cbd456b82c22a3dda4079ede701
+      size: 6367437
+    - path: src/models/model_evaluation.py
+      hash: md5
+      md5: 1d81f320600bae79a8480df66a46c5af
+      size: 2764
+    outs:
+    - path: reports/metrics.json
+      hash: md5
+      md5: d0a3c73455747ef7a9c5de229bc30109
+      size: 137
