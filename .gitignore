@@ -52,6 +52,7 @@ coverage.xml
 *.log
 reports/
 models/
+!models/model_evaluation.py
 data/
 
 # Sphinx documentation
