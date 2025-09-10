@@ -4,6 +4,7 @@ import logging
 import os
 import yaml
 import mlflow
+import dagshub
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score,classification_report,confusion_matrix
 import pickle
@@ -18,6 +19,13 @@ file_handler=logging.FileHandler('model_building.log')
 file_handler.setLevel('DEBUG')
 file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
 logger.addHandler(file_handler)
+
+
+def setup_mlflow():
+    """Set up MLflow tracking."""
+    dagshub.init(repo_owner='VanshGupta1905', repo_name='emotion-detection', mlflow=True)
+    mlflow.set_tracking_uri("https://dagshub.com/VanshGupta1905/emotion-detection.mlflow")
+    mlflow.sklearn.autolog()
 
 
 def load_params(params_path: str) -> dict:
@@ -72,19 +80,21 @@ def save_model(model:RandomForestClassifier,model_path:str)->None:
 def main():
     """Main function."""
     try:
-        params = load_params('params.yaml')['model_building']
-        
-        # Load processed features
-        X_train = load_data('./data/processed/train_tfidf.csv')
-        
-        # Load original training data to get the target variable
-        train_original = load_data('./data/interim/train.csv')
-        y_train = train_original['sentiment']
-        
-        model = train_model(X_train, y_train, params)
-        save_model(model, './models/model.pkl')
-        
-        logger.info('Model training completed successfully')
+        setup_mlflow()
+        with mlflow.start_run():
+            params = load_params('params.yaml')['model_building']
+            
+            # Load processed features
+            X_train = load_data('./data/processed/train_tfidf.csv')
+            
+            # Load original training data to get the target variable
+            train_original = load_data('./data/interim/train.csv')
+            y_train = train_original['sentiment']
+            
+            model = train_model(X_train, y_train, params)
+            save_model(model, './models/model.pkl')
+            
+            logger.info('Model training completed successfully')
     except Exception as e:
         logger.error('Unexpected error: %s', e)
         raise e
