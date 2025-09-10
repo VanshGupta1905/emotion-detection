@@ -1,0 +1,72 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/data/data_ingestion.py
+    deps:
+    - path: src/data/data_ingestion.py
+      hash: md5
+      md5: 40fdaf1bae82b16e52a3858075b31cda
+      size: 2399
+    params:
+      params.yaml:
+        data_ingestion.test_size: 0.2
+    outs:
+    - path: data/raw/test.csv
+      hash: md5
+      md5: a2bdbb8889e0b1b400eb611cedd7d651
+      size: 162098
+    - path: data/raw/train.csv
+      hash: md5
+      md5: 62b9f0c4e921cec8debb427edfc9cb67
+      size: 655499
+  data_preprocessing:
+    cmd: python src/data/data_preprocessing.py
+    deps:
+    - path: data/raw/test.csv
+      hash: md5
+      md5: a2bdbb8889e0b1b400eb611cedd7d651
+      size: 162098
+    - path: data/raw/train.csv
+      hash: md5
+      md5: 62b9f0c4e921cec8debb427edfc9cb67
+      size: 655499
+    - path: src/data/data_preprocessing.py
+      hash: md5
+      md5: d16654b76bbf9fc99d397575fe80a848
+      size: 3175
+    outs:
+    - path: data/interim/test.csv
+      hash: md5
+      md5: 96edb0bb26ee74e06aabe496a2c71ced
+      size: 109397
+    - path: data/interim/train.csv
+      hash: md5
+      md5: 4a26d7a6861343f5eb34580248ffa486
+      size: 439395
+  feature_engineering:
+    cmd: python src/features/feature_engineering.py
+    deps:
+    - path: data/interim/test.csv
+      hash: md5
+      md5: 96edb0bb26ee74e06aabe496a2c71ced
+      size: 109397
+    - path: data/interim/train.csv
+      hash: md5
+      md5: 4a26d7a6861343f5eb34580248ffa486
+      size: 439395
+    - path: src/features/feature_engineering.py
+      hash: md5
+      md5: e0b991795b1eee7bda9c6dc654b006a5
+      size: 3316
+    params:
+      params.yaml:
+        feature_engineering.max_features: 100
+    outs:
+    - path: data/processed/test_tfidf.csv
+      hash: md5
+      md5: 7f4c8a91e7f252e101a445a46e610b45
+      size: 898644
+    - path: data/processed/train_tfidf.csv
+      hash: md5
+      md5: b20a17fc3301283d358156434c703c45
+      size: 3598306
