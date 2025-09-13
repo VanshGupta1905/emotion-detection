@@ -25,7 +25,7 @@ def setup_mlflow():
     dagshub.init(repo_owner='VanshGupta1905', repo_name='emotion-detection', mlflow=True)
     mlflow.set_tracking_uri("https://dagshub.com/VanshGupta1905/emotion-detection.mlflow")
     # mlflow.set_tracking_uri("http://localhost:5000")
-    mlflow.sklearn.autolog()
+    # mlflow.sklearn.autolog()
 
 def load_model(model_path:str):
     """Load a model from a pickle file."""
@@ -79,7 +79,9 @@ def save_metrics(metrics:dict,metrics_path:str,run_id:str):
 def main():
     """Main function."""
     try:
+
         setup_mlflow()
+        mlflow.set_experiment("emotion_detection_experiment")
         with mlflow.start_run() as run:
             X_test=load_data('./data/processed/test_tfidf.csv')
             y_test=load_data('./data/interim/test.csv')['sentiment']

@@ -60,27 +60,27 @@ stages:
       size: 3316
     params:
       params.yaml:
-        feature_engineering.max_features: 1000
+        feature_engineering.max_features: 100
     outs:
     - path: data/processed/test_tfidf.csv
       hash: md5
-      md5: 2a972ca2fbe7e4963fb0127fb03604c3
-      size: 8461252
+      md5: 7f4c8a91e7f252e101a445a46e610b45
+      size: 898644
     - path: data/processed/train_tfidf.csv
       hash: md5
-      md5: a22df70fc4907c635f233d5c1d6e146c
-      size: 33842379
+      md5: b20a17fc3301283d358156434c703c45
+      size: 3598306
   model_training:
     cmd: python src/models/model_building.py
     deps:
     - path: data/processed/test_tfidf.csv
       hash: md5
-      md5: 2a972ca2fbe7e4963fb0127fb03604c3
-      size: 8461252
+      md5: 7f4c8a91e7f252e101a445a46e610b45
+      size: 898644
     - path: data/processed/train_tfidf.csv
       hash: md5
-      md5: a22df70fc4907c635f233d5c1d6e146c
-      size: 33842379
+      md5: b20a17fc3301283d358156434c703c45
+      size: 3598306
     - path: src/models/model_building.py
       hash: md5
       md5: 153dbe08cd0cd12c8f570fce2113be7c
@@ -88,25 +88,25 @@ stages:
     params:
       params.yaml:
         model_building.learning_rate: 0.1
-        model_building.n_estimators: 55
+        model_building.n_estimators: 5
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: f14341746810d60561b8c50465f5742c
-      size: 20864025
+      md5: 959d69cf85f2307f314e01fd7b4d32ed
+      size: 1278878
   model_evaluation:
     cmd: python src/models/model_Evaluation.py
     deps:
     - path: models/model.pkl
       hash: md5
-      md5: f14341746810d60561b8c50465f5742c
-      size: 20864025
+      md5: 959d69cf85f2307f314e01fd7b4d32ed
+      size: 1278878
     - path: src/models/model_Evaluation.py
       hash: md5
-      md5: 809e2346bf91a2ff42c564993c88fd33
-      size: 3295
+      md5: 33879712a450252911aa49ec88cc2508
+      size: 3360
     outs:
     - path: reports/metrics.json
       hash: md5
-      md5: fba0fb8b2151dacac2293ce62dc2b612
-      size: 228
+      md5: 48251147ac85f3b521b47d98cdcd7642
+      size: 227
