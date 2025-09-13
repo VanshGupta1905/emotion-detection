@@ -23,10 +23,10 @@ logger.addHandler(file_handler)
 
 def setup_mlflow():
     """Set up MLflow tracking."""
-    # dagshub.init(repo_owner='VanshGupta1905', repo_name='emotion-detection', mlflow=True)
-    # mlflow.set_tracking_uri("https://dagshub.com/VanshGupta1905/emotion-detection.mlflow")
-    mlflow.set_tracking_uri("http://localhost:5000")
-    # mlflow.sklearn.autolog() # This can cause issues with DagsHub when logging models manually
+    dagshub.init(repo_owner='VanshGupta1905', repo_name='emotion-detection', mlflow=True)
+    mlflow.set_tracking_uri("https://dagshub.com/VanshGupta1905/emotion-detection.mlflow")
+    # mlflow.set_tracking_uri("http://localhost:5000")
+    mlflow.sklearn.autolog() # This can cause issues with DagsHub when logging models manually
 
 
 def load_params(params_path: str) -> dict:
@@ -82,6 +82,11 @@ def main():
     """Main function."""
     try:
         setup_mlflow()
+        
+        # Initialize DagsHub for MLflow tracking
+        # dagshub.init(repo_owner='VanshGupta1905', repo_name='emotion-detection', mlflow=True)
+        # mlflow.set_tracking_uri("https://dagshub.com/VanshGupta1905/emotion-detection.mlflow")
+
         mlflow.set_experiment("emotion_detection_experiment")
         with mlflow.start_run():
             params = load_params('params.yaml')['model_building']
@@ -95,12 +100,12 @@ def main():
             y_train = train_original['sentiment']
             
             model = train_model(X_train, y_train, params)
-            infer_signature=mlflow.models.infer_signature(X_train,y_train)
-            mlflow.sklearn.log_model(
-                sk_model=model,
-                artifact_path="random_forest_model",
-                signature=infer_signature
-            )
+            # infer_signature=mlflow.models.infer_signature(X_train,y_train)
+            # mlflow.sklearn.log_model(
+            #     sk_model=model,
+            #     artifact_path="random_forest_model",
+            #     signature=infer_signature
+            # )
             save_model(model, './models/model.pkl')
             
             logger.info('Model training completed successfully')
