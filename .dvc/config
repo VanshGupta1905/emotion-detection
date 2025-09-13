@@ -1,4 +1,4 @@
 [core]
     remote = local-storage
 ['remote "local-storage"']
-    url = storage
+    url = /Users/vanshgupta/Desktop/code/Agents/MLOPS/MLFLOW/mini-project/emotion_detection/.dvc/storage
