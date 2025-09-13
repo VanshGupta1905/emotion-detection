@@ -40,9 +40,9 @@ stages:
     outs:
       - models/model.pkl
   model_evaluation:
-    cmd: python src/models/model_evaluation.py
+    cmd: python src/models/model_Evaluation.py
     deps:
-      - src/models/model_evaluation.py
+      - src/models/model_Evaluation.py
       - models/model.pkl
     outs:
       - reports/metrics.json

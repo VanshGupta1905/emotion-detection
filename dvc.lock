@@ -95,13 +95,13 @@ stages:
       md5: f14341746810d60561b8c50465f5742c
       size: 20864025
   model_evaluation:
-    cmd: python src/models/model_evaluation.py
+    cmd: python src/models/model_Evaluation.py
     deps:
     - path: models/model.pkl
       hash: md5
       md5: f14341746810d60561b8c50465f5742c
       size: 20864025
-    - path: src/models/model_evaluation.py
+    - path: src/models/model_Evaluation.py
       hash: md5
       md5: 20689ea6d2886fb1860fd48b0bf43825
       size: 3233
