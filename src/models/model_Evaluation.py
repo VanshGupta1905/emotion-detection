@@ -64,11 +64,11 @@ def evaluate_model(clf,X_test:np.ndarray,y_test:np.ndarray)->dict:
         logger.error('Unexpected error while evaluating model: %s', e)
         raise
 
-def save_metrics(metrics:dict,metrics_path:str):
+def save_metrics(metrics:dict,metrics_path:str,run_id:str):
     """Save metrics to a JSON file."""
     try:
         with open(metrics_path, 'w') as f:
-            json.dump(metrics, f,indent=4)
+            json.dump({'run_id':run_id,'metrics':metrics}, f,indent=4)
         logger.debug('Metrics saved to %s', metrics_path)
     except Exception as e:
         logger.error('Unexpected error while saving metrics: %s', e)
@@ -80,14 +80,14 @@ def main():
     """Main function."""
     try:
         setup_mlflow()
-        with mlflow.start_run():
+        with mlflow.start_run() as run:
             X_test=load_data('./data/processed/test_tfidf.csv')
             y_test=load_data('./data/interim/test.csv')['sentiment']
             model=load_model('./models/model.pkl')
 
             metrics=evaluate_model(model,X_test,y_test)
             mlflow.log_metrics(metrics)
-            save_metrics(metrics,'./reports/metrics.json')
+            save_metrics(metrics,'./reports/metrics.json',run.info.run_id)
             logger.info('Model evaluation completed successfully')
     except Exception as e:
         logger.error('Unexpected error: %s', e)
