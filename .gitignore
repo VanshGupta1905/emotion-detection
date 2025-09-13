@@ -51,8 +51,8 @@ coverage.xml
 # Django stuff:
 *.log
 reports/
-models/
-!models/model_evaluation.py
+/models/
+/mlartifacts/
 data/
 
 # Sphinx documentation
