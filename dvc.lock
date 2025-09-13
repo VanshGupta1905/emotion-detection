@@ -60,53 +60,53 @@ stages:
       size: 3316
     params:
       params.yaml:
-        feature_engineering.max_features: 100
+        feature_engineering.max_features: 1000
     outs:
     - path: data/processed/test_tfidf.csv
       hash: md5
-      md5: 7f4c8a91e7f252e101a445a46e610b45
-      size: 898644
+      md5: 2a972ca2fbe7e4963fb0127fb03604c3
+      size: 8461252
     - path: data/processed/train_tfidf.csv
       hash: md5
-      md5: b20a17fc3301283d358156434c703c45
-      size: 3598306
+      md5: a22df70fc4907c635f233d5c1d6e146c
+      size: 33842379
   model_training:
     cmd: python src/models/model_building.py
     deps:
     - path: data/processed/test_tfidf.csv
       hash: md5
-      md5: 7f4c8a91e7f252e101a445a46e610b45
-      size: 898644
+      md5: 2a972ca2fbe7e4963fb0127fb03604c3
+      size: 8461252
     - path: data/processed/train_tfidf.csv
       hash: md5
-      md5: b20a17fc3301283d358156434c703c45
-      size: 3598306
+      md5: a22df70fc4907c635f233d5c1d6e146c
+      size: 33842379
     - path: src/models/model_building.py
       hash: md5
-      md5: 90032d52d367bf57e8507f54dd60e61a
-      size: 3933
+      md5: 153dbe08cd0cd12c8f570fce2113be7c
+      size: 4193
     params:
       params.yaml:
         model_building.learning_rate: 0.1
-        model_building.n_estimators: 25
+        model_building.n_estimators: 55
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 5912414fa7a63f2dc5bd2a35575ad43a
-      size: 6367438
+      md5: f14341746810d60561b8c50465f5742c
+      size: 20864025
   model_evaluation:
     cmd: python src/models/model_evaluation.py
     deps:
     - path: models/model.pkl
       hash: md5
-      md5: 5912414fa7a63f2dc5bd2a35575ad43a
-      size: 6367438
+      md5: f14341746810d60561b8c50465f5742c
+      size: 20864025
     - path: src/models/model_evaluation.py
       hash: md5
-      md5: c0d1b643563307e7aae9d3fbb69cb930
-      size: 3207
+      md5: 20689ea6d2886fb1860fd48b0bf43825
+      size: 3233
     outs:
     - path: reports/metrics.json
       hash: md5
-      md5: d0a3c73455747ef7a9c5de229bc30109
-      size: 137
+      md5: 5f9ded535a08394f96b28db9560f09ab
+      size: 139
