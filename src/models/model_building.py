@@ -100,11 +100,13 @@ def main():
             y_train = train_original['sentiment']
             
             model = train_model(X_train, y_train, params)
-            # infer_signature=mlflow.models.infer_signature(X_train,y_train)
+            # Dags Hub does not support logging models 
+            # signature = infer_signature(X_train, model.predict(X_train))
             # mlflow.sklearn.log_model(
             #     sk_model=model,
-            #     artifact_path="random_forest_model",
-            #     signature=infer_signature
+            #     name="random_forest_model",
+            #     signature=signature,
+            #     input_example=X_train[:5]
             # )
             save_model(model, './models/model.pkl')
             
