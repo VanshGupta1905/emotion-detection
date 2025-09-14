@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from src.data import lemmetization,remove_stopwords,lower_case,remove_punctuation,remove_urls,remove_html_tags
 import pickle
 from contextlib import asynccontextmanager
-import uvicorn
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Load ML models and categories into app.state on startup
@@ -40,5 +40,6 @@ def predict(text: str, request: Request):
     return {"prediction": category}
     
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+@app.get('/Details')
+def Details():
+    return {"message": "This is a sentiment analysis API. Use the /predict endpoint to analyze text."}
