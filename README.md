@@ -75,6 +75,12 @@ This project is a machine learning pipeline for detecting emotions from text dat
     pip install -r requirements.txt
     ```
 
+## Integrated Mlflow 
+
+<img width="1463" height="680" alt="image" src="https://github.com/user-attachments/assets/5c52c375-e503-43e1-85c3-8a258e3b74f4" />
+
+
+
 ## Running the Pipeline
 
 This project uses DVC to manage the machine learning pipeline. To run the full pipeline, use the following command:
