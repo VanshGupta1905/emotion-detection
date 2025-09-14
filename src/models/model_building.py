@@ -23,10 +23,10 @@ logger.addHandler(file_handler)
 
 def setup_mlflow():
     """Set up MLflow tracking."""
-    dagshub.init(repo_owner='VanshGupta1905', repo_name='emotion-detection', mlflow=True)
-    mlflow.set_tracking_uri("https://dagshub.com/VanshGupta1905/emotion-detection.mlflow")
-    # mlflow.set_tracking_uri("http://localhost:5000")
-    mlflow.sklearn.autolog() # This can cause issues with DagsHub when logging models manually
+    # dagshub.init(repo_owner='VanshGupta1905', repo_name='emotion-detection', mlflow=True)
+    # mlflow.set_tracking_uri("https://dagshub.com/VanshGupta1905/emotion-detection.mlflow")
+    mlflow.set_tracking_uri("http://127.0.0.1:5000")
+    # mlflow.sklearn.autolog() # This can cause issues with DagsHub when logging models manually
 
 
 def load_params(params_path: str) -> dict:
@@ -101,13 +101,13 @@ def main():
             
             model = train_model(X_train, y_train, params)
             # Dags Hub does not support logging models 
-            # signature = infer_signature(X_train, model.predict(X_train))
-            # mlflow.sklearn.log_model(
-            #     sk_model=model,
-            #     name="random_forest_model",
-            #     signature=signature,
-            #     input_example=X_train[:5]
-            # )
+            signature = infer_signature(X_train, model.predict(X_train))
+            mlflow.sklearn.log_model(
+                sk_model=model,
+                name="random_forest_model",
+                signature=signature,
+                input_example=X_train[:5]
+            )
             save_model(model, './models/model.pkl')
             
             logger.info('Model training completed successfully')

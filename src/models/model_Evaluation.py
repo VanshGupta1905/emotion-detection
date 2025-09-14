@@ -22,10 +22,10 @@ logger.addHandler(file_handler)
 
 def setup_mlflow():
     """Set up MLflow tracking."""
-    dagshub.init(repo_owner='VanshGupta1905', repo_name='emotion-detection', mlflow=True)
-    mlflow.set_tracking_uri("https://dagshub.com/VanshGupta1905/emotion-detection.mlflow")
-    # mlflow.set_tracking_uri("http://localhost:5000")
-    # mlflow.sklearn.autolog()
+    # dagshub.init(repo_owner='VanshGupta1905', repo_name='emotion-detection', mlflow=True)
+    # mlflow.set_tracking_uri("https://dagshub.com/VanshGupta1905/emotion-detection.mlflow")
+    mlflow.set_tracking_uri("http://127.0.0.1:5000")
+    mlflow.sklearn.autolog()
 
 def load_model(model_path:str):
     """Load a model from a pickle file."""
