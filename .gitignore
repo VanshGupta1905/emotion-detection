@@ -48,7 +48,7 @@ coverage.xml
 *.mo
 *.pot
 .vscode/
-.dvc/storage/
+storage/
 # Django stuff:
 *.log
 reports/
@@ -94,3 +94,4 @@ target/
 # Mypy cache
 .mypy_cache/
 mlruns/
+.dvc/storage/
