@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request
-from src.data import preprocess_data,lemmetization,remove_stopwords,lower_case,remove_punctuation,remove_urls,remove_html_tags,remove_small_sentences
+from src.data import lemmetization,remove_stopwords,lower_case,remove_punctuation,remove_urls,remove_html_tags
 import pickle
 from contextlib import asynccontextmanager
 import uvicorn
