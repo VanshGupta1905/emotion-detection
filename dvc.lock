@@ -56,35 +56,35 @@ stages:
       size: 439395
     - path: src/features/feature_engineering.py
       hash: md5
-      md5: e0b991795b1eee7bda9c6dc654b006a5
-      size: 3316
+      md5: 161a451404b06a272b3356a1628b9d7d
+      size: 3404
     params:
       params.yaml:
         feature_engineering.max_features: 1000
     outs:
     - path: data/processed/test_tfidf.csv
       hash: md5
-      md5: 14eb6c180f13ca9afa4cb55a0a94524f
-      size: 898655
+      md5: 2a972ca2fbe7e4963fb0127fb03604c3
+      size: 8461252
     - path: data/processed/train_tfidf.csv
       hash: md5
-      md5: 9e5f2cc74bcca1905cd16d84724b7795
-      size: 3598367
+      md5: a22df70fc4907c635f233d5c1d6e146c
+      size: 33842379
   model_training:
     cmd: python src/models/model_building.py
     deps:
     - path: data/processed/test_tfidf.csv
       hash: md5
-      md5: 14eb6c180f13ca9afa4cb55a0a94524f
-      size: 898655
+      md5: 2a972ca2fbe7e4963fb0127fb03604c3
+      size: 8461252
     - path: data/processed/train_tfidf.csv
       hash: md5
-      md5: 9e5f2cc74bcca1905cd16d84724b7795
-      size: 3598367
+      md5: a22df70fc4907c635f233d5c1d6e146c
+      size: 33842379
     - path: src/models/model_building.py
       hash: md5
-      md5: e7fe505259f24e44456ca65939b1f984
-      size: 4327
+      md5: 508068bdb183910deeb440b16542e08d
+      size: 4269
     params:
       params.yaml:
         model_building.learning_rate: 0.1
@@ -103,10 +103,10 @@ stages:
       size: 18957585
     - path: src/models/model_Evaluation.py
       hash: md5
-      md5: fbe2b0a0e0b94cb927e97ca0c15a6e08
+      md5: 7bdf022600d33c5990d7a15c7e919b11
       size: 3422
     outs:
     - path: reports/metrics.json
       hash: md5
-      md5: 6180cd3fe5c84898e2a880b814fc6bf8
-      size: 227
+      md5: e5c67d937cc3ddf648e23b77860134fd
+      size: 228

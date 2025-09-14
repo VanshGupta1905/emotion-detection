@@ -4,7 +4,7 @@ import os
 import logging
 from sklearn.feature_extraction.text import TfidfVectorizer
 import yaml
-
+import pickle
 logger=logging.getLogger('feature_engineering')
 logger.setLevel('DEBUG')
 
@@ -52,7 +52,8 @@ def apply_tfidf(train_data:pd.DataFrame,test_data:pd.DataFrame,max_features:int=
         
         X_train_transformed = tfidf.fit_transform(train_data['content'].astype(str))
         X_test_transformed = tfidf.transform(test_data['content'].astype(str))
-        
+        with open('./models/tfidf.pkl','wb') as f:
+            pickle.dump(tfidf,f)
         feature_names = tfidf.get_feature_names_out()
         
         X_train = pd.DataFrame(X_train_transformed.toarray(), columns=feature_names)

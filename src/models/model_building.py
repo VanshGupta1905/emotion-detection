@@ -27,7 +27,7 @@ def setup_mlflow():
     """Set up MLflow tracking."""
     # dagshub.init(repo_owner='VanshGupta1905', repo_name='emotion-detection', mlflow=True)
     # mlflow.set_tracking_uri("https://dagshub.com/VanshGupta1905/emotion-detection.mlflow")
-    # mlflow.set_tracking_uri("http://localhost:5000")
+    mlflow.set_tracking_uri("http://127.0.0.1:5000")
     # This can cause issues with DagsHub when logging models manually
     # mlflow.sklearn.autolog(registered_model_name="random_forest_model")
 
