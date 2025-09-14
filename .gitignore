@@ -47,7 +47,8 @@ coverage.xml
 # Translations
 *.mo
 *.pot
-
+.vscode/
+.dvc/storage/
 # Django stuff:
 *.log
 reports/
