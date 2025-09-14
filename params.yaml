@@ -5,5 +5,5 @@ feature_engineering:
   max_features: 1000
 
 model_building:
-  n_estimators: 50
+  n_estimators: 500
   learning_rate: 0.1

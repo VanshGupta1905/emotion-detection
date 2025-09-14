@@ -107,7 +107,7 @@ def main():
             signature = infer_signature(X_train, model.predict(X_train))
             mlflow.sklearn.log_model(
                 sk_model=model,
-                artifact_path="model",
+                name="model",
                 signature=signature,
             )
             save_model(model, './models/model.pkl')
