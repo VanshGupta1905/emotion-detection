@@ -52,6 +52,7 @@ def load_data(path)->pd.DataFrame:
 def evaluate_model(clf,X_test:np.ndarray,y_test:np.ndarray)->dict:
     """Evaluate a model."""
     try:
+        mlflow.set_experiment("emotion_detection_experiment")
         y_pred=clf.predict(X_test)
         accuracy=accuracy_score(y_test,y_pred)
         precision=precision_score(y_test,y_pred)
