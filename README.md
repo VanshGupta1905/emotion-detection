@@ -51,6 +51,11 @@ This project is a machine learning pipeline for detecting emotions from text dat
 └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 ```
 
+
+<img width="825" height="693" alt="image" src="https://github.com/user-attachments/assets/e74a70c5-3d87-47a9-94c0-dce41ef89c96" />
+
+
+
 ## Setup
 
 1.  **Clone the repository:**
