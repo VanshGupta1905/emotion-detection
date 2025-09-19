@@ -1,9 +1,9 @@
-.. emotion-detection documentation master file, created by
+.. emotion detection documentation master file, created by
    sphinx-quickstart.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-emotion-detection documentation!
+emotion detection documentation!
 ==============================================
 
 Contents:

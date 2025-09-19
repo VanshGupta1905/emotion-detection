@@ -22,7 +22,11 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+<<<<<<< HEAD
 models/
+=======
+
+>>>>>>> edab1a52adbcf6ccdcfb853c3dbff243ee895450
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -46,9 +50,20 @@ coverage.xml
 # Translations
 *.mo
 *.pot
+<<<<<<< HEAD
 
 # Django stuff:
 *.log
+=======
+.vscode/
+storage/
+# Django stuff:
+*.log
+reports/
+/models/
+/mlartifacts/
+data/
+>>>>>>> edab1a52adbcf6ccdcfb853c3dbff243ee895450
 
 # Sphinx documentation
 docs/_build/
@@ -62,7 +77,10 @@ target/
 # Database
 *.db
 *.rdb
+<<<<<<< HEAD
 data/
+=======
+>>>>>>> edab1a52adbcf6ccdcfb853c3dbff243ee895450
 
 # Pycharm
 .idea
@@ -88,5 +106,10 @@ data/
 
 # Mypy cache
 .mypy_cache/
+<<<<<<< HEAD
 /data
 /models
+=======
+mlruns/
+.dvc/storage/
+>>>>>>> edab1a52adbcf6ccdcfb853c3dbff243ee895450
