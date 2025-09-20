@@ -14,6 +14,7 @@ stages:
     deps:
     - data/raw/test.csv
     - data/raw/train.csv
+    - src/features/build_features.py
     outs:
     - data/processed/test_processed.csv
     - data/processed/train_processed.csv
@@ -23,6 +24,7 @@ stages:
     deps:
     - data/processed/test_processed.csv
     - data/processed/train_processed.csv
+    - src/features/feature_engineering.py
     outs:
     - data/features/test_tfidf.csv
     - data/features/train_tfidf.csv

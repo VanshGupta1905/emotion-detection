@@ -28,12 +28,15 @@ antlr4-python3-runtime==4.9.3
     #   omegaconf
 anyio==4.10.0
     # via
+    #   gql
     #   httpx
     #   mcp
     #   sse-starlette
     #   starlette
 appdirs==1.4.4
-    # via iterative-telemetry
+    # via
+    #   dagshub
+    #   iterative-telemetry
 asyncssh==2.21.0
     # via scmrepo
 atpublic==6.0.1
@@ -49,10 +52,18 @@ attrs==25.3.0
     #   sqltrie
 authlib==1.6.4
     # via fastmcp
+backoff==2.2.1
+    # via gql
 billiard==4.2.1
     # via celery
 blinker==1.9.0
     # via flask
+boto3==1.40.35
+    # via dagshub
+botocore==1.40.35
+    # via
+    #   boto3
+    #   s3transfer
 cachetools==5.5.2
     # via
     #   google-auth
@@ -79,6 +90,7 @@ click==8.3.0
     #   click-didyoumean
     #   click-plugins
     #   click-repl
+    #   dagshub
     #   flask
     #   mlflow-skinny
     #   nltk
@@ -107,10 +119,18 @@ cycler==0.12.1
     # via matplotlib
 cyclopts==3.24.0
     # via fastmcp
+dacite==1.6.0
+    # via dagshub
+dagshub==0.6.3
+    # via -r requirements.in
+dagshub-annotation-converter==0.1.13
+    # via dagshub
 databricks-sdk==0.65.0
     # via
     #   mlflow-skinny
     #   mlflow-tracing
+dataclasses-json==0.6.7
+    # via dagshub
 dictdiffer==0.9.0
     # via dvc-data
 diskcache==5.6.3
@@ -191,16 +211,20 @@ gitdb==4.0.12
     # via gitpython
 gitpython==3.1.45
     # via
+    #   dagshub
     #   mlflow-skinny
     #   scmrepo
 google-auth==2.40.3
     # via databricks-sdk
+gql[requests]==4.0.0
+    # via dagshub
 grandalf==0.8
     # via dvc
 graphene==3.4.3
     # via mlflow
 graphql-core==3.2.6
     # via
+    #   gql
     #   graphene
     #   graphql-relay
 graphql-relay==3.2.0
@@ -217,6 +241,7 @@ httpcore==1.0.9
     # via httpx
 httpx==0.28.1
     # via
+    #   dagshub
     #   fastmcp
     #   mcp
 httpx-sse==0.4.1
@@ -242,6 +267,10 @@ itsdangerous==2.2.0
     # via flask
 jinja2==3.1.6
     # via flask
+jmespath==1.0.1
+    # via
+    #   boto3
+    #   botocore
 joblib==1.5.2
     # via
     #   nltk
@@ -269,6 +298,8 @@ kombu==5.5.4
     #   dvc-task
 lazy-object-proxy==1.12.0
     # via openapi-spec-validator
+lxml==6.0.1
+    # via dagshub-annotation-converter
 mako==1.3.10
     # via alembic
 markdown-it-py==4.0.0
@@ -279,6 +310,8 @@ markupsafe==3.0.2
     #   jinja2
     #   mako
     #   werkzeug
+marshmallow==3.26.1
+    # via dataclasses-json
 matplotlib==3.10.6
     # via
     #   -r requirements.in
@@ -300,6 +333,8 @@ multidict==6.6.4
     # via
     #   aiohttp
     #   yarl
+mypy-extensions==1.1.0
+    # via typing-inspect
 networkx==3.5
     # via dvc
 nltk==3.9.1
@@ -354,12 +389,15 @@ packaging==25.0
     #   gunicorn
     #   hydra-core
     #   kombu
+    #   marshmallow
     #   matplotlib
     #   mlflow-skinny
     #   mlflow-tracing
 pandas==2.3.2
     # via
     #   -r requirements.in
+    #   dagshub
+    #   dagshub-annotation-converter
     #   mlflow
     #   seaborn
 parse==1.20.2
@@ -370,8 +408,12 @@ pathspec==0.12.1
     # via
     #   dvc
     #   scmrepo
+pathvalidate==3.3.1
+    # via dagshub
 pillow==11.3.0
-    # via matplotlib
+    # via
+    #   dagshub-annotation-converter
+    #   matplotlib
 platformdirs==4.4.0
     # via dvc
 prompt-toolkit==3.0.52
@@ -401,6 +443,7 @@ pycparser==2.23
     # via cffi
 pydantic[email]==2.11.9
     # via
+    #   dagshub-annotation-converter
     #   fastapi
     #   fastmcp
     #   gto
@@ -435,7 +478,9 @@ pyperclip==1.10.0
     # via fastmcp
 python-dateutil==2.9.0.post0
     # via
+    #   botocore
     #   celery
+    #   dagshub
     #   graphene
     #   matplotlib
     #   pandas
@@ -451,6 +496,8 @@ pytz==2025.2
     # via pandas
 pyyaml==6.0.2
     # via
+    #   dagshub
+    #   dagshub-annotation-converter
     #   jsonschema-path
     #   mlflow-skinny
     #   omegaconf
@@ -467,14 +514,19 @@ requests==2.32.5
     #   docker
     #   dvc
     #   dvc-studio-client
+    #   gql
     #   iterative-telemetry
     #   jsonschema-path
     #   mlflow-skinny
+    #   requests-toolbelt
+requests-toolbelt==1.0.0
+    # via gql
 rfc3339-validator==0.1.4
     # via openapi-schema-validator
 rich==14.1.0
     # via
     #   cyclopts
+    #   dagshub
     #   dvc
     #   fastmcp
     #   gto
@@ -494,6 +546,8 @@ ruamel-yaml==0.18.15
     #   gto
 ruamel-yaml-clib==0.2.12
     # via ruamel-yaml
+s3transfer==0.14.0
+    # via boto3
 scikit-learn==1.7.2
     # via
     #   -r requirements.in
@@ -509,7 +563,9 @@ scmrepo==3.5.2
 seaborn==0.13.2
     # via -r requirements.in
 semver==3.0.4
-    # via gto
+    # via
+    #   dagshub
+    #   gto
 shellingham==1.5.4
     # via typer
 shortuuid==1.0.13
@@ -523,6 +579,7 @@ six==1.17.0
     #   flatten-dict
     #   python-dateutil
     #   rfc3339-validator
+    #   treelib
 smmap==5.0.2
     # via gitdb
 sniffio==1.3.1
@@ -545,6 +602,8 @@ tabulate==0.9.0
     # via
     #   dvc
     #   gto
+tenacity==9.1.2
+    # via dagshub
 threadpoolctl==3.6.0
     # via scikit-learn
 tomlkit==0.13.3
@@ -556,12 +615,15 @@ tqdm==4.67.1
     #   fsspec
     #   nltk
     #   scmrepo
+treelib==1.8.0
+    # via dagshub
 typer==0.18.0
     # via gto
 typing-extensions==4.15.0
     # via
     #   alembic
     #   asyncssh
+    #   dagshub-annotation-converter
     #   fastapi
     #   graphene
     #   mlflow-skinny
@@ -573,7 +635,10 @@ typing-extensions==4.15.0
     #   pydantic-core
     #   sqlalchemy
     #   typer
+    #   typing-inspect
     #   typing-inspection
+typing-inspect==0.9.0
+    # via dataclasses-json
 typing-inspection==0.4.1
     # via
     #   pydantic
@@ -584,6 +649,7 @@ tzdata==2025.2
     #   pandas
 urllib3==2.5.0
     # via
+    #   botocore
     #   docker
     #   dulwich
     #   requests
@@ -607,7 +673,9 @@ werkzeug==3.1.1
     #   flask
     #   openapi-core
 yarl==1.20.1
-    # via aiohttp
+    # via
+    #   aiohttp
+    #   gql
 zc-lockfile==4.0
     # via dvc
 zipp==3.23.0
