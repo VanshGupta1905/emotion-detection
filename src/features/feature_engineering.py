@@ -86,6 +86,9 @@ def main():
 
         train_df, test_df = apply_tfidf(train_data, test_data, max_features)
 
+        train_df['sentiment'] = train_data['sentiment']
+        test_df['sentiment'] = test_data['sentiment']
+
         save_data(train_df, os.path.join("./data", "features", "train_tfidf.csv"))
         save_data(test_df, os.path.join("./data", "features", "test_tfidf.csv"))
     except Exception as e:
