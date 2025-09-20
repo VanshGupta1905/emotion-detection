@@ -1,6 +1,7 @@
-<<<<<<< HEAD
 emotion-detection
 ==============================
+
+
 
 A small ml project to find emotion from given text
 
