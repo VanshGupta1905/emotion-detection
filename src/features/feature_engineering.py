@@ -81,13 +81,13 @@ def main():
         params = load_params('params.yaml')
         max_features = params['feature_engineering']['max_features']
 
-        train_data = load_data('./data/interim/train.csv')
-        test_data = load_data('./data/interim/test.csv')
+        train_data = load_data('./data/processed/train_processed.csv')
+        test_data = load_data('./data/processed/test_processed.csv')
 
         train_df, test_df = apply_tfidf(train_data, test_data, max_features)
 
-        save_data(train_df, os.path.join("./data", "processed", "train_tfidf.csv"))
-        save_data(test_df, os.path.join("./data", "processed", "test_tfidf.csv"))
+        save_data(train_df, os.path.join("./data", "features", "train_tfidf.csv"))
+        save_data(test_df, os.path.join("./data", "features", "test_tfidf.csv"))
     except Exception as e:
         logger.error('Failed to complete the feature engineering process: %s', e)
         print(f"Error: {e}")
