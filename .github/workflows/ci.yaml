@@ -15,6 +15,12 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
+      - name: Start MLflow Server
+        run: |
+          mlflow server --host 127.0.0.1 --port 5000 --backend-store-uri sqlite:///mlflow.db &
+          sleep 5 # Give the server a moment to start
       - name: run Pipeline
+        env:
+          MLFLOW_TRACKING_URI: http://127.0.0.1:5000
         run: |
           dvc repro
