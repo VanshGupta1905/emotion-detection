@@ -14,8 +14,7 @@ train_data = pd.read_csv('./data/raw/train.csv')
 test_data = pd.read_csv('./data/raw/test.csv')
 
 # transform the data
-nltk.download('wordnet')
-nltk.download('stopwords')
+
 
 def lemmatization(text):
     lemmatizer= WordNetLemmatizer()

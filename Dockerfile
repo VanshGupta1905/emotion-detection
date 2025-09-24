@@ -6,6 +6,8 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
+RUN python -m nltk.downloader wordnet
+RUN python -m nltk.downloader stopwords
 COPY . .
 
 EXPOSE 8000
