@@ -30,6 +30,10 @@ stages:
       hash: md5
       md5: 62b9f0c4e921cec8debb427edfc9cb67
       size: 655499
+    - path: src/features/build_features.py
+      hash: md5
+      md5: d47c063f6698fb89f31cb618aa3f7c79
+      size: 2364
     outs:
     - path: data/processed/test_processed.csv
       hash: md5
@@ -50,44 +54,48 @@ stages:
       hash: md5
       md5: 76a3f219f2ab4f2081cddfa0a27287b6
       size: 485640
+    - path: src/features/feature_engineering.py
+      hash: md5
+      md5: eee8cd1e3616b495229407908b8479ea
+      size: 3538
     outs:
     - path: data/features/test_tfidf.csv
       hash: md5
-      md5: 66380e5845b010b07b1e4f0dc0f884a8
-      size: 472501
+      md5: 43af73981426f91084df6d2156ffcf69
+      size: 8475262
     - path: data/features/train_tfidf.csv
       hash: md5
-      md5: 92066452ea31b28ca899eff586b819c1
-      size: 1895287
+      md5: 85d285b638065facfcc3827afc3ba572
+      size: 33899919
   model_training:
     cmd: python src/models/train_model.py
     deps:
     - path: data/features/test_tfidf.csv
       hash: md5
-      md5: 66380e5845b010b07b1e4f0dc0f884a8
-      size: 472501
+      md5: 43af73981426f91084df6d2156ffcf69
+      size: 8475262
     - path: data/features/train_tfidf.csv
       hash: md5
-      md5: 92066452ea31b28ca899eff586b819c1
-      size: 1895287
+      md5: 85d285b638065facfcc3827afc3ba572
+      size: 33899919
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: a1cf813aa40d127688fca61638cebbf1
-      size: 69705
+      md5: 486e38425d7254576a1e9cf9812c07fb
+      size: 70453
   model_evaluation:
     cmd: python src/models/evaluation.py
     deps:
     - path: data/features/test_tfidf.csv
       hash: md5
-      md5: 66380e5845b010b07b1e4f0dc0f884a8
-      size: 472501
+      md5: 43af73981426f91084df6d2156ffcf69
+      size: 8475262
     - path: models/model.pkl
       hash: md5
-      md5: a1cf813aa40d127688fca61638cebbf1
-      size: 69705
+      md5: 486e38425d7254576a1e9cf9812c07fb
+      size: 70453
     outs:
     - path: reports/metrics.json
       hash: md5
-      md5: b0fef11a0773ca15bf2f807a384e076d
+      md5: 4bbb33a77b2ad288e57d5644d4c8c171
       size: 140
