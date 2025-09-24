@@ -1,4 +1,4 @@
-#!/Users/vanshgupta/Desktop/code/Agents/MLOPS/emotion-detection/.venv/bin/python
+#!/Users/vanshgupta/Desktop/code/Agents/MLOPS/emotion-detection/.venv/bin/python3.13
 
 import sys
 import json
