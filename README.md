@@ -107,4 +107,3 @@ This command will execute the stages defined in `dvc.yaml` in the correct order:
 ## Experiment Tracking
 
 This project is integrated with DagsHub and MLflow for experiment tracking. When you run the pipeline, MLflow will automatically log the parameters, metrics, and model artifacts to the DagsHub repository.
->>>>>>> edab1a52adbcf6ccdcfb853c3dbff243ee895450
